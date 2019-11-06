@@ -1,7 +1,7 @@
 package com.calil.pontoeletronico.api.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -60,7 +60,7 @@ public class Empresa implements Serializable {
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
-	@Column(name = "dta_criacao", nullable = false)
+	@Column(name = "data_criacao", nullable = false)
 	public Date getDataCriacao() {
 		return dataCriacao;
 	}
@@ -90,12 +90,12 @@ public class Empresa implements Serializable {
 	}
 	@PreUpdate
 	public void preUpDate() {
-		dataAtualizacao = new Date(id);
+		dataAtualizacao = new Date();
 		
 	}
 	@PrePersist
 	public void prePersist() {
-		final Date atual = new Date(id);
+		final Date atual = new Date();
 		dataCriacao = atual;
 		dataAtualizacao = atual;
 	}

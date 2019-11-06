@@ -3,7 +3,7 @@ package com.calil.pontoeletronico.api.entity;
 import java.beans.Transient;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,7 +24,7 @@ import javax.persistence.Table;
 import com.calil.pontoeletronico.api.enums.PerfilEnum;
 
 @Entity
-@Table(name = "funcionarios")
+@Table(name = "funcionario")
 public class Funcionario implements Serializable {
 	
 	private static final long serialVersionUID = -5754246207015712518L;
@@ -171,11 +171,11 @@ public class Funcionario implements Serializable {
 	}
 	@PreUpdate
 	public void preUpDate() {
-		dataAtualizacao = new Date(id);
+		dataAtualizacao = new Date();
 	}
 	@PrePersist
 	public void prePersist() {
-		final Date atual = new Date(id);
+		final Date atual = new Date();
 		dataCriacao = atual;
 		dataAtualizacao = atual;
 	}
